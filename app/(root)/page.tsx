@@ -8,7 +8,7 @@ const HomePage: React.FC<HomePageProps> = ({}) => {
   const loggedInUser = { firstName: "John", lastName: "Doe" };
   return (
     <section className="home">
-      <div className="hm-content">
+      <div className="home-content">
         <header className="home-header">
           <HeaderBox
             type="greeting"
