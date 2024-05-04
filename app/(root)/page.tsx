@@ -1,6 +1,8 @@
 import React from "react";
 import HeaderBox from "@/components/modules/Dashboard/HeaderBox";
 import TotalBalanceBox from "@/components/modules/Dashboard/TotalBalanceBox";
+import RightSidebar from "@/components/modules/Dashboard/RigthSidebar";
+import { testUser } from "@/constants/mockData";
 
 interface HomePageProps {}
 
@@ -23,6 +25,13 @@ const HomePage: React.FC<HomePageProps> = ({}) => {
           />
         </header>
       </div>
+      <RightSidebar
+        user={testUser}
+        transactions={[]}
+        banks={[]}
+        // transactions={account?.transactions}
+        // banks={accountsData?.slice(0, 2)}
+      />
     </section>
   );
 };
