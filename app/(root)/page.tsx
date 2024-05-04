@@ -1,6 +1,6 @@
 import React from "react";
-import HeaderBox from "@/components/HeaderBox";
-import TotalBalanceBox from "@/components/TotalBalanceBox";
+import HeaderBox from "@/components/modules/Dashboard/HeaderBox";
+import TotalBalanceBox from "@/components/modules/Dashboard/TotalBalanceBox";
 
 interface HomePageProps {}
 
