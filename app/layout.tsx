@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Horizon",
   description: "Horizon is a modern banking platform for the future.",
   icons: {
-    icon: "/icon/logo.svg",
+    icon: "/icons/logo.svg",
   },
 };
 
@@ -25,9 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`font-sans text-black-1 bg-white ${inter} ${ibmPlexSerif}`}
-      >
+      <body className={`${inter.variable} ${ibmPlexSerif.variable}`}>
         {children}
       </body>
     </html>
