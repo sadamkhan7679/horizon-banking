@@ -26,6 +26,7 @@ import { useRouter } from "next/navigation";
 import CustomInput from "@/components/shared/CustomInput";
 import AppLinkIcon from "@/components/shared/AppLinkIcon";
 import { AuthFormType } from "@/types/auth";
+import { signIn, signUp } from "@/lib/auth/auth.actions";
 
 type AuthFormProps = {
   type: AuthFormType;
@@ -68,18 +69,23 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
           password: data.password,
         };
 
-        // const newUser = await signUp(userData);
-        //
-        // setUser(newUser);
+        console.log("userData", userData);
+
+        // @ts-ignore
+        const newUser = await signUp(userData);
+
+        console.log("newUser", newUser);
+
+        setUser(newUser);
       }
 
       if (type === AuthFormType.SignIn) {
-        // const response = await signIn({
-        //   email: data.email,
-        //   password: data.password,
-        // });
-        //
-        // if (response) router.push("/");
+        const response = await signIn({
+          email: data.email,
+          password: data.password,
+        });
+
+        if (response) router.push("/");
       }
     } catch (error) {
       console.log(error);

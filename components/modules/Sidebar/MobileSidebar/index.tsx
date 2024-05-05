@@ -15,13 +15,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import AppLinkIcon from "@/components/shared/AppLinkIcon";
+import { MobileNavProps } from "@/types";
+import Footer from "@/components/modules/Sidebar/Footer";
 // import Footer from "./Footer"
 
 const MobileNav = ({ user }: MobileNavProps) => {
-  const loggedIn = {
-    firstName: "John",
-    lastName: "Doe",
-  };
   const pathname = usePathname();
 
   return (
@@ -79,7 +77,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
               </nav>
             </SheetClose>
 
-            {/*<Footer user={user} type="mobile" />*/}
+            <Footer user={user} type="mobile" />
           </div>
         </SheetContent>
       </Sheet>

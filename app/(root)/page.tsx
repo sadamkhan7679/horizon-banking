@@ -2,12 +2,14 @@ import React from "react";
 import HeaderBox from "@/components/modules/Dashboard/HeaderBox";
 import TotalBalanceBox from "@/components/modules/Dashboard/TotalBalanceBox";
 import RightSidebar from "@/components/modules/Dashboard/RigthSidebar";
-import { testUser } from "@/constants/mockData";
+import { getLoggedInUser } from "@/lib/auth/auth.actions";
 
 interface HomePageProps {}
 
-const HomePage: React.FC<HomePageProps> = ({}) => {
-  const loggedInUser = { firstName: "John", lastName: "Doe" };
+const HomePage: React.FC<HomePageProps> = async ({}) => {
+  const loggedInUser = await getLoggedInUser();
+
+  console.log("loggedInUser", loggedInUser);
   return (
     <section className="home">
       <div className="home-content">
@@ -26,7 +28,7 @@ const HomePage: React.FC<HomePageProps> = ({}) => {
         </header>
       </div>
       <RightSidebar
-        user={testUser}
+        user={loggedInUser}
         transactions={[]}
         banks={[]}
         // transactions={account?.transactions}
