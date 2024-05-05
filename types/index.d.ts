@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 
+import { AuthFormType } from "@/types/auth";
+
 declare type SearchParamProps = {
   params: { [key: string]: string };
   searchParams: { [key: string]: string | string[] | undefined };
@@ -188,7 +190,7 @@ declare interface PlaidLinkProps {
 // };
 
 declare interface AuthFormProps {
-  type: "sign-in" | "sign-up";
+  type: AuthFormType;
 }
 
 declare interface BankDropdownProps {

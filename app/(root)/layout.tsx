@@ -3,6 +3,7 @@ import Image from "next/image";
 import Sidebar from "@/components/modules/Sidebar";
 import MobileNav from "@/components/modules/Sidebar/MobileSidebar";
 import { testUser } from "@/constants/mockData";
+import AppLinkIcon from "@/components/shared/AppLinkIcon";
 
 export default function RootLayout({
   children,
@@ -14,7 +15,7 @@ export default function RootLayout({
       <Sidebar user={testUser} />
       <div className="flex size-full flex-col">
         <div className="root-layout">
-          <Image src="/icons/logo.svg" width={30} height={30} alt="logo" />
+          <AppLinkIcon text={false} />
           <div>
             <MobileNav user={testUser} />
           </div>
