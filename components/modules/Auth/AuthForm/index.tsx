@@ -27,6 +27,7 @@ import CustomInput from "@/components/shared/CustomInput";
 import AppLinkIcon from "@/components/shared/AppLinkIcon";
 import { AuthFormType } from "@/types/auth";
 import { signIn, signUp } from "@/lib/auth/auth.actions";
+import PlaidLink from "@/components/modules/Plaid/PlaidLink";
 
 type AuthFormProps = {
   type: AuthFormType;
@@ -69,12 +70,12 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
           password: data.password,
         };
 
-        console.log("userData", userData);
+        // console.log("userData", userData);
 
         // @ts-ignore
         const newUser = await signUp(userData);
 
-        console.log("newUser", newUser);
+        // console.log("newUser", newUser);
 
         setUser(newUser);
       }
@@ -116,7 +117,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
       </header>
       {user ? (
         <div className="flex flex-col gap-4">
-          {/*<PlaidLink user={user} variant="primary" />*/}
+          <PlaidLink user={user} variant="primary" />
         </div>
       ) : (
         <>
