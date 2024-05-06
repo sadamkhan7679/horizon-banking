@@ -1,3 +1,5 @@
+import { User } from "@/types";
+
 export const testUser: User = {
   $id: "123",
   email: "user@test.com",
