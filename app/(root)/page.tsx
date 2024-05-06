@@ -3,13 +3,33 @@ import HeaderBox from "@/components/modules/Dashboard/HeaderBox";
 import TotalBalanceBox from "@/components/modules/Dashboard/TotalBalanceBox";
 import RightSidebar from "@/components/modules/Dashboard/RigthSidebar";
 import { getLoggedInUser } from "@/lib/auth/auth.actions";
+import { getAccount, getAccounts } from "@/lib/banks/banks.actions";
+import { SearchParamProps } from "@/types";
+import RecentTransactions from "@/components/modules/Dashboard/RecentTransactions";
 
 interface HomePageProps {}
 
-const HomePage: React.FC<HomePageProps> = async ({}) => {
+const HomePage = async ({ searchParams: { id, page } }: SearchParamProps) => {
+  const currentPage = Number(page as string) || 1;
   const loggedInUser = await getLoggedInUser();
 
-  console.log("loggedInUser", loggedInUser);
+  const accounts = await getAccounts({ userId: loggedInUser.$id });
+
+  // console.log("accounts", accounts);
+  //
+  // console.log("loggedInUser", loggedInUser);
+
+  if (!loggedInUser || !accounts) {
+    return null;
+  }
+
+  const accountsData = accounts?.data;
+  const appwriteItemId = (id as string) || accountsData[0]?.appwriteItemId;
+
+  const account = await getAccount({ appwriteItemId });
+
+  // console.log("account", account);
+
   return (
     <section className="home">
       <div className="home-content">
@@ -21,18 +41,22 @@ const HomePage: React.FC<HomePageProps> = async ({}) => {
             user={loggedInUser.firstName || "Guest"}
           />
           <TotalBalanceBox
-            accounts={[]}
-            totalBanks={3}
-            totalCurrentBalance={1000}
+            accounts={accountsData}
+            totalBanks={accounts?.totalBanks}
+            totalCurrentBalance={accounts?.totalCurrentBalance}
           />
         </header>
+        <RecentTransactions
+          accounts={accountsData}
+          transactions={account?.transactions}
+          appwriteItemId={appwriteItemId}
+          page={currentPage}
+        />
       </div>
       <RightSidebar
         user={loggedInUser}
-        transactions={[]}
-        banks={[]}
-        // transactions={account?.transactions}
-        // banks={accountsData?.slice(0, 2)}
+        transactions={account?.transactions}
+        banks={accountsData?.slice(0, 2)}
       />
     </section>
   );
