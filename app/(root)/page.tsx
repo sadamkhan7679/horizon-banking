@@ -6,6 +6,7 @@ import { getLoggedInUser } from "@/lib/auth/auth.actions";
 import { getAccount, getAccounts } from "@/lib/banks/banks.actions";
 import { SearchParamProps } from "@/types";
 import RecentTransactions from "@/components/modules/Dashboard/RecentTransactions";
+import LoadingComponent from "@/components/shared/Loading";
 
 interface HomePageProps {}
 

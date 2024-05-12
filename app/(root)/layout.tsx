@@ -1,8 +1,6 @@
 import React from "react";
-import Image from "next/image";
 import Sidebar from "@/components/modules/Sidebar";
 import MobileNav from "@/components/modules/Sidebar/MobileSidebar";
-import { testUser } from "@/constants/mockData";
 import AppLinkIcon from "@/components/shared/AppLinkIcon";
 import { getLoggedInUser } from "@/lib/auth/auth.actions";
 import { redirect } from "next/navigation";

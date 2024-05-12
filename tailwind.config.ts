@@ -22,6 +22,8 @@ const config = {
       colors: {
         fill: {
           1: "rgba(255, 255, 255, 0.10)",
+          2: "rgba(255, 255, 255, 0.20)",
+          3: "rgba(255, 255, 255, 0.30)",
         },
         bankGradient: "#0179FE",
         indigo: {
@@ -100,6 +102,7 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "spin-slow": "spin 2s linear infinite",
       },
     },
   },
