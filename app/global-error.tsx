@@ -1,5 +1,9 @@
 "use client";
 
+import * as Sentry from "@sentry/nextjs";
+import Error from "next/error";
+import { useEffect } from "react";
+
 export default function GlobalError({
   error,
   reset,
@@ -7,6 +11,12 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  console.log("err", error);
+
+  useEffect(() => {
+    Sentry.captureException(error);
+  }, [error]);
+
   return (
     <html>
       <body>
@@ -19,7 +29,10 @@ export default function GlobalError({
               {/* eslint-disable-next-line react/no-unescaped-entities */}
               We ran into an issue. Please try again.
             </p>
-            <p className="text-2xl text-gray-800 my-5">{error.message}</p>
+            <p className="text-2xl text-gray-800 my-5">
+              {/* @ts-ignore */}
+              <Error />
+            </p>
 
             <button className="button" onClick={() => reset()}>
               Try again
